@@ -176,7 +176,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             <div className="mt-auto p-4">
               <div className="flex items-center">
                 <Avatar className="h-9 w-9">
-                  <AvatarImage src="/placeholder.svg" />
+                  <AvatarImage src="/placeholders.svg" />
                   <AvatarFallback>{userProfile?.full_name ? getInitials(userProfile.full_name) : "A"}</AvatarFallback>
                 </Avatar>
                 <div className="ml-3 min-w-0 flex-1">
