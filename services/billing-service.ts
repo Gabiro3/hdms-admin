@@ -3,16 +3,7 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
 import { format, startOfMonth, endOfMonth, subMonths } from "date-fns"
-
-// Define the cost for each diagnosis type
-export const DIAGNOSIS_COSTS = {
-  "X-Ray": 1800,
-  "CT Scan": 6300,
-  MRI: 12500,
-  Mammography: 10000,
-  Ultrasound: 5000,
-  Other: 11000,
-}
+import { getDiagnosisCosts } from "@/lib/utils/billing-utils"
 
 type BillingPeriod = "current-month" | "previous-month" | "last-3-months" | "last-6-months" | "custom"
 
@@ -88,7 +79,7 @@ export async function getBillingData(filters: BillingFilter = {}) {
     if (error) throw error
 
     // Process the data to calculate costs
-    const processedData = processBillingData(diagnoses)
+    const processedData = await processBillingData(diagnoses)
 
     return {
       billingData: processedData,
@@ -106,7 +97,10 @@ export async function getBillingData(filters: BillingFilter = {}) {
 /**
  * Process raw diagnosis data into billing information
  */
-function processBillingData(diagnoses: any[]) {
+async function processBillingData(diagnoses: any[]) {
+  // Get the diagnosis costs
+  const DIAGNOSIS_COSTS = await getDiagnosisCosts()
+
   // Group diagnoses by hospital
   const hospitalGroups: Record<string, any> = {}
 

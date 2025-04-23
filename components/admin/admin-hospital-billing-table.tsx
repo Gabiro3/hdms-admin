@@ -7,13 +7,14 @@ import { Button } from "@/components/ui/button"
 import { Search, Eye, Download } from "lucide-react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Progress } from "@/components/ui/progress"
+import { formatCurrency } from "@/lib/utils/billing-utils"
 
 interface AdminHospitalBillingTableProps {
   hospitals: any[]
   formatCurrency: (amount: number) => string
 }
 
-export default function AdminHospitalBillingTable({ hospitals, formatCurrency }: AdminHospitalBillingTableProps) {
+export default function AdminHospitalBillingTable({ hospitals }: AdminHospitalBillingTableProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedHospital, setSelectedHospital] = useState<any | null>(null)
 

@@ -12,6 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { formatCurrency } from "@/lib/utils/billing-utils"
 import AdminBillingChart from "@/components/admin/admin-billing-chart"
 import AdminHospitalBillingTable from "@/components/admin/admin-hospital-billing-table"
 import InvoicesList from "@/components/billing/invoices-list"
@@ -145,15 +146,6 @@ export default function AdminBillingDashboard({
     }
   }
 
-  // Format currency
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-RW", {
-      style: "currency",
-      currency: "RWF",
-      minimumFractionDigits: 0,
-    }).format(amount)
-  }
-
   // Extract overall stats
   const overallStats = billingData?.overall || {
     totalAmount: 0,
@@ -170,7 +162,10 @@ export default function AdminBillingDashboard({
           <p className="text-sm text-muted-foreground">View and manage billing information for all hospitals</p>
         </div>
         <div className="flex items-center gap-2">
-          <Select value={selectedHospital || ""} onValueChange={(value) => setSelectedHospital(value || null)}>
+          <Select
+            value={selectedHospital || "all"}
+            onValueChange={(value) => setSelectedHospital(value === "all" ? null : value)}
+          >
             <SelectTrigger className="w-[200px]">
               <SelectValue placeholder="All Hospitals" />
             </SelectTrigger>

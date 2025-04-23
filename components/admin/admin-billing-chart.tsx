@@ -1,6 +1,7 @@
 "use client"
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts"
+import { formatCurrency } from "@/lib/utils/billing-utils"
 
 interface AdminBillingChartProps {
   data: {
@@ -18,15 +19,6 @@ export default function AdminBillingChart({ data }: AdminBillingChartProps) {
 
   // Define colors for the chart
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#82ca9d"]
-
-  // Format currency for the tooltip
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("en-RW", {
-      style: "currency",
-      currency: "RWF",
-      minimumFractionDigits: 0,
-    }).format(value)
-  }
 
   // Custom tooltip
   const CustomTooltip = ({ active, payload }: any) => {
