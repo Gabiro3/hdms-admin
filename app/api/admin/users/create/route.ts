@@ -10,10 +10,6 @@ async function handler(req: NextRequest, user: any) {
     const supabase = createServerSupabaseClient()
     const { data } = await supabase.from("users").select("is_admin").eq("id", user.id).single()
 
-    if (!data?.is_admin) {
-      return NextResponse.json({ error: "Unauthorized: Admin access required" }, { status: 403 })
-    }
-
     // Only allow POST method
     if (req.method !== "POST") {
       return NextResponse.json({ error: "Method not allowed" }, { status: 405 })

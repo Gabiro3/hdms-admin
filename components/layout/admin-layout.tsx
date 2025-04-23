@@ -65,7 +65,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         // Check if user is an admin
         if (!data?.is_admin) {
           // Redirect non-admin users to the dashboard
-          router.push("/dashboard")
+          router.push("/unauthorized")
         }
       }
 
