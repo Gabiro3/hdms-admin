@@ -21,6 +21,7 @@ import {
   LifeBuoy,
   BarChart,
   Building,
+  FileChartLineIcon,
 } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -110,8 +111,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { name: "Diagnoses", href: "/admin/diagnoses", icon: FileText },
     { name: "Users", href: "/admin/users", icon: Users },
     { name: "Hospitals", href: "/admin/hospitals", icon: Building },
+    { name: "Blling", href: "/admin/billing", icon: FileChartLineIcon },
     { name: "Support", href: "/admin/support", icon: LifeBuoy },
-    { name: "Analytics", href: "/admin/analytics", icon: BarChart },
     { name: "Settings", href: "/admin/settings", icon: Settings },
   ]
 
