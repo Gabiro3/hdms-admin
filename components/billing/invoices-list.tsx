@@ -115,7 +115,7 @@ export default function InvoicesList({ invoices, formatCurrency, isAdmin }: Invo
               invoices.map((invoice) => (
                 <TableRow key={invoice.id}>
                   <TableCell className="font-medium">{invoice.invoice_number}</TableCell>
-                  <TableCell>{format(new Date(invoice.created_at), "MMM d, yyyy")}</TableCell>
+                  <TableCell>{format(new Date(invoice.date_generated), "MMM d, yyyy")}</TableCell>
                   <TableCell>
                     {format(new Date(invoice.start_date), "MMM d")} -{" "}
                     {format(new Date(invoice.end_date), "MMM d, yyyy")}
@@ -165,7 +165,7 @@ export default function InvoicesList({ invoices, formatCurrency, isAdmin }: Invo
           <DialogHeader>
             <DialogTitle>Invoice {selectedInvoice?.invoice_number}</DialogTitle>
             <DialogDescription>
-              Generated on {selectedInvoice && format(new Date(selectedInvoice.created_at), "MMMM d, yyyy")}
+              Generated on {selectedInvoice && format(new Date(selectedInvoice.date_generated), "MMMM d, yyyy")}
             </DialogDescription>
           </DialogHeader>
 

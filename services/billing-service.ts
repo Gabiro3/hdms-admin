@@ -268,7 +268,7 @@ export async function getInvoices(hospitalId?: string) {
       query = query.eq("hospital_id", hospitalId)
     }
 
-    const { data, error } = await query.order("created_at", { ascending: false })
+    const { data, error } = await query.order("date_generated", { ascending: false })
 
     if (error) throw error
 

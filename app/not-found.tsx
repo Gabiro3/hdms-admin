@@ -13,7 +13,7 @@ export default function NotFound() {
       <p className="mt-4 text-center text-gray-600 max-w-md">
         The page you are looking for does not exist or you do not have permission to view it.
       </p>
-      <Link href="/dashboard" className="mt-8">
+      <Link href="/admin" className="mt-8">
         <Button>Return to Dashboard</Button>
       </Link>
     </div>

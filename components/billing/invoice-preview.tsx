@@ -59,7 +59,7 @@ export default function InvoicePreview({ invoice, formatCurrency }: InvoicePrevi
           <div className="space-y-1">
             <div className="flex justify-between">
               <p className="text-sm font-medium text-gray-500">Invoice Date:</p>
-              <p className="text-sm">{format(new Date(invoice.created_at), "MMMM d, yyyy")}</p>
+              <p className="text-sm">{format(new Date(invoice.date_generated), "MMMM d, yyyy")}</p>
             </div>
             <div className="flex justify-between">
               <p className="text-sm font-medium text-gray-500">Billing Period:</p>

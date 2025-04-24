@@ -56,11 +56,6 @@ export default async function ViewDiagnosisPage({
     notFound()
   }
 
-  // Check if user has access to this diagnosis
-  if (diagnosis.hospital_id !== userData.hospital_id) {
-    redirect("/unauthorized")
-  }
-
   return (
     <DashboardLayout>
       <DiagnosisView diagnosis={diagnosis} />

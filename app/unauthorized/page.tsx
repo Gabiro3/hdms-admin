@@ -22,7 +22,7 @@ export default function UnauthorizedPage() {
         </CardContent>
         <CardFooter>
           <Button asChild className="w-full">
-            <Link href="/">Return to Dashboard</Link>
+            <Link href="/admin">Return to Dashboard</Link>
           </Button>
         </CardFooter>
       </Card>
