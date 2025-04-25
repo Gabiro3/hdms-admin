@@ -4,13 +4,14 @@ import { format } from "date-fns"
 import { Card, CardContent } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Separator } from "@/components/ui/separator"
+import { formatCurrency } from "@/lib/utils/billing-utils"
 
 interface InvoicePreviewProps {
   invoice: any
   formatCurrency: (amount: number) => string
 }
 
-export default function InvoicePreview({ invoice, formatCurrency }: InvoicePreviewProps) {
+export default function InvoicePreview({ invoice }: InvoicePreviewProps) {
   const details = invoice.details || {}
   const hospitalName = details.hospitalName || invoice.hospitals?.name || "Unknown Hospital"
   const hospitalAddress = details.hospitalAddress || invoice.hospitals?.address || ""
@@ -31,18 +32,37 @@ export default function InvoicePreview({ invoice, formatCurrency }: InvoicePrevi
   })
 
   return (
-    <div className="space-y-8 p-4 bg-white rounded-lg">
+    <div className="space-y-8 p-4 bg-white rounded-lg" id="invoice-content">
       {/* Invoice Header */}
-      <div className="flex justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">INVOICE</h2>
-          <p className="text-gray-500">{invoice.invoice_number}</p>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <div className="bg-blue-600 text-white p-3 rounded-lg mr-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">INVOICE</h2>
+            <p className="text-gray-500">{invoice.invoice_number}</p>
+          </div>
         </div>
         <div className="text-right">
-          <p className="font-bold">Hospital Diagnosis Management System</p>
-          <p className="text-sm text-gray-500">123 Medical Drive, Suite 400</p>
-          <p className="text-sm text-gray-500">Kigali, Rwanda</p>
-          <p className="text-sm text-gray-500">info@hdms.com</p>
+          <p className="font-bold">Healthlink Rwanda HDMS</p>
+          <p className="text-sm text-gray-500">KN 5 Rd, Kigali</p>
+          <p className="text-sm text-gray-500">Rwanda</p>
+          <p className="text-sm text-gray-500">info@healthlinkrwanda.org</p>
         </div>
       </div>
 
@@ -124,8 +144,8 @@ export default function InvoicePreview({ invoice, formatCurrency }: InvoicePrevi
       <div className="rounded-lg bg-gray-50 p-4">
         <p className="font-medium">Notes:</p>
         <p className="text-sm text-gray-500">
-          Payment is due within 30 days of invoice date. Please make payment to Hospital Diagnosis Management System.
-          Thank you for your business.
+          Payment is due within 30 days of invoice date. Please make payment to Healthlink Rwanda HDMS. Thank you for
+          your business.
         </p>
       </div>
     </div>

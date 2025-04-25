@@ -28,7 +28,7 @@ export default async function AdminBillingPage() {
   const { data: userData } = await supabase.from("users").select("is_admin").eq("id", session.user.id).single()
 
   if (!userData || !userData.is_admin) {
-    redirect("/dashboard")
+    redirect("/unauthorized")
   }
 
   // Get billing data for all hospitals for the last month

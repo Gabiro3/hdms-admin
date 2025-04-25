@@ -51,10 +51,10 @@ export async function getBillingData(filters: BillingFilter = {}) {
 
     // Build the query
     let query = supabase.from("diagnoses").select(`
-      *,
-      users (id, full_name, email),
-      hospitals (id, name, code, address)
-    `)
+     *,
+     users (id, full_name, email),
+     hospitals (id, name, code, address)
+   `)
 
     // Apply filters
     if (filters.hospitalId) {
@@ -260,9 +260,9 @@ export async function getInvoices(hospitalId?: string) {
     const supabase = createServerSupabaseClient()
 
     let query = supabase.from("invoices").select(`
-      *,
-      hospitals (id, name, code)
-    `)
+     *,
+     hospitals (id, name, code)
+   `)
 
     if (hospitalId) {
       query = query.eq("hospital_id", hospitalId)
@@ -325,9 +325,9 @@ export async function sendInvoiceEmail(invoiceId: string) {
     const { data: invoice, error: fetchError } = await supabase
       .from("invoices")
       .select(`
-        *,
-        hospitals (id, name, code, address)
-      `)
+       *,
+       hospitals (id, name, code, address)
+     `)
       .eq("id", invoiceId)
       .single()
 
@@ -348,6 +348,7 @@ export async function sendInvoiceEmail(invoiceId: string) {
     if (error) throw error
 
     revalidatePath("/admin/billing")
+    revalidatePath("/billing")
 
     return { success: true, error: null }
   } catch (error) {
