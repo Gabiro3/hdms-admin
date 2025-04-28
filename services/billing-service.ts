@@ -156,9 +156,9 @@ async function processBillingData(diagnoses: any[]) {
     })
 
     // Update overall stats
-    overallStats.totalAmount += cost
+    overallStats.totalAmount += Number(cost)
     overallStats.diagnosisCounts[diagnosisType] = (overallStats.diagnosisCounts[diagnosisType] || 0) + 1
-    overallStats.diagnosisCosts[diagnosisType] = (overallStats.diagnosisCosts[diagnosisType] || 0) + cost
+    overallStats.diagnosisCosts[diagnosisType] = (overallStats.diagnosisCosts[diagnosisType] || 0) + Number(cost)
   })
 
   return {

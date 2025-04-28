@@ -4,12 +4,11 @@
 
 // Define the cost for each diagnosis type
 const DIAGNOSIS_COSTS = {
-    "X-Ray": 1800,
-    "CT Scan": 6300,
-    MRI: 12500,
-    Mammography: 10000,
-    Ultrasound: 5000,
-    Other: 11000,
+    "Chest X-Ray (Pneumonia Detection)": process.env.NEXT_PUBLIC_PNEUMONIA_PRICE,
+    "MRI (Brain Cancer Detection)": process.env.NEXT_PUBLIC_BRAIN_MRI_PRICE,
+    "Mammography (Breast Cancer Detection)": process.env.NEXT_PUBLIC_MMG_PRICE,
+    Ultrasound: process.env.NEXT_PUBLIC_ULTRASOUND_PRICE,
+    Other: process.env.NEXT_PUBLIC_OTHER_PRICE,
   }
   
   /**
