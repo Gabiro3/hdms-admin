@@ -50,10 +50,6 @@ export default async function AdminBillingPage() {
   return (
     <AdminLayout>
       <div className="space-y-6">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-gray-900">Billing Administration</h1>
-          <p className="text-sm text-gray-500">Manage billing and invoices for all hospitals</p>
-        </div>
 
         <AdminBillingDashboard
           initialBillingData={billingData}

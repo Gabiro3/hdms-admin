@@ -127,7 +127,6 @@ export default function AdminUsersList() {
       }
 
       const response = await apiRequest(url)
-      console.log(response)
 
       if (!response.ok) {
         throw new Error("Failed to fetch users")

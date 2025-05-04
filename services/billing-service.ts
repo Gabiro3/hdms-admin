@@ -146,9 +146,9 @@ async function processBillingData(diagnoses: any[]) {
 
     // Update hospital group data
     const group = hospitalGroups[hospitalId]
-    group.totalAmount += cost
+    group.totalAmount += Number(cost)
     group.diagnosisCounts[diagnosisType] = (group.diagnosisCounts[diagnosisType] || 0) + 1
-    group.diagnosisCosts[diagnosisType] = (group.diagnosisCosts[diagnosisType] || 0) + cost
+    group.diagnosisCosts[diagnosisType] = (group.diagnosisCosts[diagnosisType] || 0) + Number(cost)
     group.diagnoses.push({
       ...diagnosis,
       diagnosisType,

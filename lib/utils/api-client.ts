@@ -12,7 +12,6 @@ type RequestOptions = {
 export async function apiRequest(url: string, options: RequestOptions = {}) {
   // Get the auth token
   const token = await getAuthToken()
-  console.log(token)
 
   // Prepare headers with authentication
   const headers: Record<string, string> = {
@@ -35,7 +34,6 @@ export async function apiRequest(url: string, options: RequestOptions = {}) {
     headers,
     body: options.body instanceof FormData ? options.body : JSON.stringify(options.body),
   })
-  console.log(response)
 
   // Handle unauthorized errors
   if (response.status === 401) {
